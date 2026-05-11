@@ -1,0 +1,284 @@
+---
+title: 函数方法
+icon: ⚙️
+---
+
+<Heading level="1">
+    函数方法 (Function Methods)
+</Heading>
+
+<Paragraph>
+    Lodash 提供了一系列函数操作工具，包括柯里化、节流、防抖等。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    函数创建
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.bind</Mark>
+        </TableCell>
+        <TableCell>
+            绑定函数 this 并预设参数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.bindKey</Mark>
+        </TableCell>
+        <TableCell>
+            绑定对象方法
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.curry</Mark>
+        </TableCell>
+        <TableCell>
+            柯里化函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.curryRight</Mark>
+        </TableCell>
+        <TableCell>
+            从右到左柯里化
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.partial</Mark>
+        </TableCell>
+        <TableCell>
+            预设部分参数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.partialRight</Mark>
+        </TableCell>
+        <TableCell>
+            从右侧预设参数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.rearg</Mark>
+        </TableCell>
+        <TableCell>
+            重排函数参数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.rest</Mark>
+        </TableCell>
+        <TableCell>
+            将剩余参数转为数组
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.spread</Mark>
+        </TableCell>
+        <TableCell>
+            将数组展开为参数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.wrap</Mark>
+        </TableCell>
+        <TableCell>
+            创建一个包装函数
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    函数控制
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.after</Mark>
+        </TableCell>
+        <TableCell>
+            创建一个函数，在执行 n 次后才生效
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.before</Mark>
+        </TableCell>
+        <TableCell>
+            创建一个函数，最多执行 n 次
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.once</Mark>
+        </TableCell>
+        <TableCell>
+            只执行一次
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.throttle</Mark>
+        </TableCell>
+        <TableCell>
+            节流函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.debounce</Mark>
+        </TableCell>
+        <TableCell>
+            防抖函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.memoize</Mark>
+        </TableCell>
+        <TableCell>
+            缓存函数结果
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.negate</Mark>
+        </TableCell>
+        <TableCell>
+            否定断言函数结果
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.flow</Mark>
+        </TableCell>
+        <TableCell>
+            从左到右组合函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.flowRight</Mark>
+        </TableCell>
+        <TableCell>
+            从右到左组合函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.over</Mark>
+        </TableCell>
+        <TableCell>
+            创建一个函数，并行执行多个函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.overEvery</Mark>
+        </TableCell>
+        <TableCell>
+            创建一个函数，所有断言都通过才返回 true
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.overSome</Mark>
+        </TableCell>
+        <TableCell>
+            创建一个函数，任一断言通过就返回 true
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    使用示例
+</Heading>
+
+<Paragraph>
+    柯里化函数：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var curry = _.curry(function(a, b, c) {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  return a + b + c;</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">});</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var addFive = curry(2)(3);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">addFive(1);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => 6</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    节流函数：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var throttled = _.throttle(function() {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  console.log('throttled');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">}, 1000);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// 1000ms 内最多执行一次</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    组合函数：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var negate = function(n) { return -n; };</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var square = function(n) { return n * n; };</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var negativeSquare = _.flow(square, negate);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">negativeSquare(5);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => -25</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    防抖与节流对比
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>防抖 (debounce)</Mark>
+        </TableCell>
+        <TableCell>
+            在最后一次调用后等待指定时间才执行，期间有新调用则重置计时
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>节流 (throttle)</Mark>
+        </TableCell>
+        <TableCell>
+            在指定时间间隔内最多执行一次，保证执行频率
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Paragraph>
+    典型使用场景：
+</Paragraph>
+
+<BulletedList>
+    防抖：搜索输入、窗口调整、表单验证
+</BulletedList>
+<BulletedList>
+    节流：滚动事件、鼠标移动、动画帧
+</BulletedList>
