@@ -1,0 +1,372 @@
+---
+title: FP 模块介绍
+icon: ⚛️
+---
+
+<Heading level="1">
+    FP 模块介绍
+</Heading>
+
+<Paragraph>
+    Lodash 的 <Mark bold>FP 模块</Mark> 提供了一套<Mark color="blue">不可变、自动柯里化、iteratee-first data-last</Mark> 风格的方法。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    什么是 FP 风格？
+</Heading>
+
+<Paragraph>
+    FP 模块改变了 Lodash 方法的参数顺序和行为：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>标准 Lodash</Mark>
+        </TableCell>
+        <TableCell>
+            <Mark color="blue">_.map(collection, iteratee)</Mark>
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>FP 模块</Mark>
+        </TableCell>
+        <TableCell>
+            <Mark color="blue">fp.map(iteratee)(collection)</Mark>
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Paragraph>
+    主要变化：
+</Paragraph>
+
+<BulletedList>
+    <Mark bold>参数顺序</Mark>：iteratee 在前，数据在后
+</BulletedList>
+<BulletedList>
+    <Mark bold>自动柯里化</Mark>：所有方法自动柯里化，支持部分应用
+</BulletedList>
+<BulletedList>
+    <Mark bold>不可变</Mark>：不修改原始数据，返回新数据
+</BulletedList>
+<BulletedList>
+    <Mark bold>固定参数</Mark>：限制函数接受的参数数量
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    加载 FP 模块
+</Heading>
+
+<Paragraph>
+    在 Node.js 中：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    在浏览器中（使用构建版本）：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">&lt;script src="lodash.fp.js"&gt;&lt;/script&gt;</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">&lt;script&gt;var fp = window.fp;&lt;/script&gt;</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    参数顺序对照
+</Heading>
+
+<Paragraph>
+    以下是部分方法的参数顺序变化：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>方法</Mark>
+        </TableCell>
+        <TableCell>
+            <Mark bold>标准 Lodash</Mark>
+        </TableCell>
+        <TableCell>
+            <Mark bold>FP 模块</Mark>
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.get</Mark>
+        </TableCell>
+        <TableCell>
+            (object, path, default)
+        </TableCell>
+        <TableCell>
+            (default, path, object)
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.map</Mark>
+        </TableCell>
+        <TableCell>
+            (collection, iteratee)
+        </TableCell>
+        <TableCell>
+            (iteratee, collection)
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.filter</Mark>
+        </TableCell>
+        <TableCell>
+            (collection, predicate)
+        </TableCell>
+        <TableCell>
+            (predicate, collection)
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.reduce</Mark>
+        </TableCell>
+        <TableCell>
+            (collection, iteratee, accumulator)
+        </TableCell>
+        <TableCell>
+            (accumulator, iteratee, collection)
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.add</Mark>
+        </TableCell>
+        <TableCell>
+            (augend, addend)
+        </TableCell>
+        <TableCell>
+            (addend, augend)
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    使用示例
+</Heading>
+
+<Paragraph>
+    柯里化和函数组合：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var square = function(n) { return n * n; };</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var add = function(a, b) { return a + b; };</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    组合函数：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var negativeSquare = fp.flow(</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  square,</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  function(n) { return -n; }</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">negativeSquare(5);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => -25</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    部分应用：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var addFive = fp.add(5);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">addFive(10);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => 15</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    不可变操作：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var arr = [1, 2, 3];</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var result = fp.remove(fp.eq(2))(arr);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">console.log(arr); // [1, 2, 3] - 原数组不变</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">console.log(result); // [1, 3] - 返回新数组</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    占位符 (Placeholder)
+</Heading>
+
+<Paragraph>
+    FP 模块支持占位符，用于部分应用：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var greet = fp.partial(function(greeting, name) {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  return greeting + ' ' + name;</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">});</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var greetFred = greet('Hello')(fp.__);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">greetFred('Fred');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => 'Hello Fred'</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    方法别名
+</Heading>
+
+<Paragraph>
+    FP 模块包含一些来自 Ramda 的别名：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>Ramda 别名</Mark>
+        </TableCell>
+        <TableCell>
+            <Mark bold>对应 Lodash 方法</Mark>
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>compose</Mark>
+        </TableCell>
+        <TableCell>
+            flowRight
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>pipe</Mark>
+        </TableCell>
+        <TableCell>
+            flow
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>prop</Mark>
+        </TableCell>
+        <TableCell>
+            get
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>path</Mark>
+        </TableCell>
+        <TableCell>
+            get
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>assoc</Mark>
+        </TableCell>
+        <TableCell>
+            set
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>all</Mark>
+        </TableCell>
+        <TableCell>
+            every
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark>any</Mark>
+        </TableCell>
+        <TableCell>
+            some
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    转换选项
+</Heading>
+
+<Paragraph>
+    FP 模块的方法可以通过 <Mark color="blue">.convert()</Mark> 方法转换，支持以下选项：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>cap</Mark>
+        </TableCell>
+        <TableCell>
+            限制 iteratee 参数（默认 true）
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>curry</Mark>
+        </TableCell>
+        <TableCell>
+            柯里化（默认 true）
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>fixed</Mark>
+        </TableCell>
+        <TableCell>
+            固定参数数量（默认 true）
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>immutable</Mark>
+        </TableCell>
+        <TableCell>
+            不可变操作（默认 true）
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>rearg</Mark>
+        </TableCell>
+        <TableCell>
+            重排参数（默认 true）
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Paragraph>
+    使用转换选项：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var remove = fp.remove.convert({ immutable: false });</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var arr = [1, 2, 3, 4];</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">remove(fp.eq(2))(arr);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">console.log(arr); // [1, 3, 4] - 原数组被修改</Mark><Mark>`</Mark>
+</Paragraph>
