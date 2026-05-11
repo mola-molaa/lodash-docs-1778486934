@@ -1,0 +1,195 @@
+---
+title: 贡献指南
+icon: 🤝
+---
+
+<Heading level="1">
+    贡献指南
+</Heading>
+
+<Paragraph>
+    欢迎贡献！在贡献前请阅读<Link href="https://github.com/openjs-foundation/cross-project-council/blob/main/CODE_OF_CONDUCT.md">行为准则</Link>并<Link href="https://github.com/lodash/lodash/issues">搜索 Issue 追踪器</Link>；您的问题可能已经在 <Mark bold>master</Mark> 中讨论或修复。
+</Paragraph>
+
+<Paragraph>
+    要贡献，请<Link href="https://help.github.com/articles/fork-a-repo/">Fork</Link> Lodash，提交更改，并<Link href="https://help.github.com/articles/using-pull-requests/">发送 Pull Request</Link>。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    功能请求
+</Heading>
+
+<Paragraph>
+    功能请求应提交到<Link href="https://github.com/lodash/lodash/issues">Issue 追踪器</Link>，附上预期行为和用例描述，它们将保持关闭状态，直到社区显示出足够的兴趣（例如 <Link href="https://help.github.com/articles/about-discussions-in-issues-and-pull-requests/">:+1: 反应</Link>）。
+</Paragraph>
+
+<Paragraph>
+    在提交请求前，请搜索<Link href="https://github.com/lodash/lodash/issues?q=label%3A%22votes+needed%22+sort%3Areactions-%2B1-desc">已关闭的 Issue</Link>中类似的请求。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    Pull Request
+</Heading>
+
+<Paragraph>
+    对于添加或 bug 修复，您只需要修改 <Mark color="blue">lodash.js</Mark>。在 Pull Request 中包含 <Mark bold>test/</Mark> 目录中的更新单元测试。不用担心重新生成 <Mark color="blue">dist/</Mark> 或 <Mark color="blue">doc/</Mark> 文件。
+</Paragraph>
+
+<Paragraph>
+    运行单元测试前，需要安装<Link href="https://docs.npmjs.com/files/package.json#devdependencies">开发依赖</Link>：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm i</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    通过命令行运行单元测试：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm test</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    或者在 Web 浏览器中打开 <Mark color="blue">test/index.html</Mark> 和 <Mark color="blue">test/fp.html</Mark>。
+</Paragraph>
+
+<Paragraph>
+    <Link href="http://backbonejs.org/">Backbone</Link> 和 <Link href="http://underscorejs.org/">Underscore</Link> 测试套件也包含在内。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    贡献者许可协议 (CLA)
+</Heading>
+
+<Paragraph>
+    Lodash 是<Link href="https://openjsf.org/">Open JS Foundation</Link>的成员。因此，我们要求所有贡献者签署我们的<Link href="https://openjsf.org/cla">贡献者许可协议 (CLA)</Link>。
+</Paragraph>
+
+<Paragraph>
+    关于 CLA 的更多信息，请查看 Alex Russell 的优秀文章：<Link href="https://infrequently.org/2008/06/why-do-i-need-to-sign-this/">"Why Do I Need to Sign This?"</Link>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    编码指南
+</Heading>
+
+<Paragraph>
+    除了以下指南，请遵循代码中已建立的约定。
+</Paragraph>
+
+<Heading level="3">
+    间距
+</Heading>
+
+<Paragraph>
+    使用<Mark bold>两个空格</Mark>进行缩进。不使用 Tab。
+</Paragraph>
+
+<Heading level="3">
+    命名
+</Heading>
+
+<Paragraph>
+    保持变量和方法名称<Mark bold>简洁且具有描述性</Mark>。
+</Paragraph>
+
+<Paragraph>
+    变量名 <Mark color="blue">index</Mark>、<Mark color="blue">array</Mark> 和 <Mark color="blue">iteratee</Mark> 优于 <Mark color="blue">i</Mark>、<Mark color="blue">arr</Mark> 和 <Mark color="blue">fn</Mark>。
+</Paragraph>
+
+<Heading level="3">
+    引号
+</Heading>
+
+<Paragraph>
+    首选<Mark bold>单引号</Mark>字符串，而不是双引号；但是，如果值包含单引号字符，请使用双引号字符串以避免不必要的转义。
+</Paragraph>
+
+<Heading level="3">
+    注释
+</Heading>
+
+<Paragraph>
+    请使用单行注释注释重要添加，并使用函数的<Link href="http://www.2ality.com/2011/08/jsdoc-intro.html">JSDoc 风格</Link>注释。
+</Paragraph>
+
+<Paragraph>
+    使用 <Link href="https://www.npmjs.com/package/jscs">JSCS</Link> 强制执行指南：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm run style</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    提示
+</Heading>
+
+<Paragraph>
+    您可以通过在项目的根目录中添加包含以下内容的 <Mark color="blue">.opt-in</Mark> 文件来选择加入 pre-push git 钩子：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">pre-push</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    这样，当您 <Mark color="blue">git push</Mark> 时，pre-push git 钩子将触发并执行：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm run validate</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    治理
+</Heading>
+
+<Paragraph>
+    关于 Lodash 的治理结构，请参考<Link href="https://github.com/lodash/lodash/blob/HEAD/GOVERNANCE.md">GOVERNANCE.md</Link>。
+</Paragraph>
+
+<Paragraph>
+    当前<Mark bold>技术指导委员会 (TSC)</Mark> 成员：
+</Paragraph>
+
+<BulletedList>
+    John-David Dalton (<Link href="https://github.com/jdalton">@jdalton</Link>) - Lodash 创建者
+</BulletedList>
+<BulletedList>
+    Jon Church (<Link href="https://github.com/jonchurch">@jonchurch</Link>)
+</BulletedList>
+<BulletedList>
+    Jordan Harband (<Link href="https://github.com/ljharb">@ljharb</Link>)
+</BulletedList>
+<BulletedList>
+    Michał Lipiński (<Link href="https://github.com/falsyvalues">@falsyvalues</Link>)
+</BulletedList>
+<BulletedList>
+    Tobie Langel (<Link href="https://github.com/tobie">@tobie</Link>)
+</BulletedList>
+<BulletedList>
+    Ulises Gascón (<Link href="https://github.com/UlisesGascon">@UlisesGascon</Link>)
+</BulletedList>
+
+<Paragraph>
+    <Mark bold>安全分流团队</Mark> 负责评估和管理的漏洞和事件报告。安全分流目前由<Link href="https://github.com/lodash/lodash/blob/HEAD/GOVERNANCE.md#technical-steering-committee-members">TSC</Link>处理。
+</Paragraph>
+
+<Paragraph>
+    <Mark bold>发布团队</Mark> 负责将 Lodash 的新版本发布到 npm。当前成员：John-David Dalton。
+</Paragraph>
