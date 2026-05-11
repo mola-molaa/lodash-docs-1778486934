@@ -1,0 +1,321 @@
+---
+title: 架构概览
+icon: 🏗️
+---
+
+<Heading level="1">
+    架构概览
+</Heading>
+
+<Paragraph>
+    本章介绍 Lodash 的整体架构设计和核心模块。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    项目结构
+</Heading>
+
+<Paragraph>
+    Lodash 仓库主要包含以下目录和文件：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>lodash.js</Mark>
+        </TableCell>
+        <TableCell>
+            主入口文件，完整构建
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>fp/</Mark>
+        </TableCell>
+        <TableCell>
+            函数式编程模块
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>lib/</Mark>
+        </TableCell>
+        <TableCell>
+            构建和文档生成脚本
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>test/</Mark>
+        </TableCell>
+        <TableCell>
+            测试文件
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>perf/</Mark>
+        </TableCell>
+        <TableCell>
+            性能测试
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>doc/</Mark>
+        </TableCell>
+        <TableCell>
+            文档文件
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>dist/</Mark>
+        </TableCell>
+        <TableCell>
+            构建输出目录
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    FP 模块架构
+</Heading>
+
+<Paragraph>
+    FP 模块位于 <Mark color="blue">fp/</Mark> 目录，提供函数式编程风格的方法。
+</Paragraph>
+
+<Heading level="3">
+    核心文件
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_baseConvert.js</Mark>
+        </TableCell>
+        <TableCell>
+            核心转换函数，将标准 Lodash 方法转换为 FP 风格
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_mapping.js</Mark>
+        </TableCell>
+        <TableCell>
+            方法映射配置，定义别名、参数顺序、柯里化等
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_convertBrowser.js</Mark>
+        </TableCell>
+        <TableCell>
+            浏览器环境转换入口
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_placeholder.js</Mark>
+        </TableCell>
+        <TableCell>
+            占位符定义
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    FP 转换特性
+</Heading>
+
+<Paragraph>
+    FP 模块通过 <Mark color="blue">baseConvert</Mark> 函数实现以下转换：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>柯里化 (curry)</Mark>
+        </TableCell>
+        <TableCell>
+            自动将多参数函数转换为柯里化形式
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>参数重排 (rearg)</Mark>
+        </TableCell>
+        <TableCell>
+            将参数顺序改为 iteratee-first data-last
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>固定参数 (fixed)</Mark>
+        </TableCell>
+        <TableCell>
+            限制函数接受的参数数量
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>不可变 (immutable)</Mark>
+        </TableCell>
+        <TableCell>
+            操作前克隆数据，避免修改原数据
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>参数上限 (cap)</Mark>
+        </TableCell>
+        <TableCell>
+            限制 iteratee 接受的参数数量
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    构建系统
+</Heading>
+
+<Paragraph>
+    Lodash 使用自定义构建脚本，位于 <Mark color="blue">lib/</Mark> 目录。
+</Paragraph>
+
+<Heading level="3">
+    主要构建任务
+</Heading>
+
+<BulletedList>
+    <Mark bold>build:main</Mark> - 构建主库
+</BulletedList>
+<BulletedList>
+    <Mark bold>build:fp</Mark> - 构建 FP 模块
+</BulletedList>
+<BulletedList>
+    <Mark bold>build:main-modules</Mark> - 构建主库模块化版本
+</BulletedList>
+<BulletedList>
+    <Mark bold>build:fp-modules</Mark> - 构建 FP 模块化版本
+</BulletedList>
+
+<Heading level="3">
+    构建输出
+</Heading>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm run build</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    将生成以下文件到 <Mark color="blue">dist/</Mark> 目录：
+</Paragraph>
+
+<BulletedList>
+    lodash.js - 完整开发版本
+</BulletedList>
+<BulletedList>
+    lodash.min.js - 完整生产版本
+</BulletedList>
+<BulletedList>
+    lodash.core.js - 核心开发版本
+</BulletedList>
+<BulletedList>
+    lodash.core.min.js - 核心生产版本
+</BulletedList>
+<BulletedList>
+    lodash.fp.js - FP 模块浏览器版本
+</BulletedList>
+<BulletedList>
+    mapping.fp.js - FP 映射配置浏览器版本
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    测试架构
+</Heading>
+
+<Paragraph>
+    Lodash 拥有完善的测试体系：
+</Paragraph>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>test/test.js</Mark>
+        </TableCell>
+        <TableCell>
+            主测试套件
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>test/test-fp.js</Mark>
+        </TableCell>
+        <TableCell>
+            FP 模块测试
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>test/backbone.html</Mark>
+        </TableCell>
+        <TableCell>
+            Backbone 兼容性测试
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>test/underscore.html</Mark>
+        </TableCell>
+        <TableCell>
+            Underscore 兼容性测试
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>perf/perf.js</Mark>
+        </TableCell>
+        <TableCell>
+            性能基准测试
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Heading level="3">
+    CI/CD 流程
+</Heading>
+
+<Paragraph>
+    项目使用 GitHub Actions 进行持续集成：
+</Paragraph>
+
+<BulletedList>
+    <Mark bold>ci-node.yml</Mark> - Node.js 多版本测试（4-25）
+</BulletedList>
+<BulletedList>
+    <Mark bold>ci-bun.yml</Mark> - Bun 运行时测试
+</BulletedList>
+<BulletedList>
+    <Mark bold>ci-docs.yml</Mark> - 文档测试
+</BulletedList>
+<BulletedList>
+    <Mark bold>browser-testing.yml</Mark> - 浏览器兼容性测试（Playwright）
+</BulletedList>
+<BulletedList>
+    <Mark bold>codeql.yml</Mark> - 代码安全分析
+</BulletedList>
+<BulletedList>
+    <Mark bold>ci-dist-sync.yml</Mark> - 确保 dist 文件与源码同步
+</BulletedList>
