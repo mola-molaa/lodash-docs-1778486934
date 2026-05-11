@@ -1,0 +1,318 @@
+---
+title: 数组方法
+icon: 📋
+---
+
+<Heading level="1">
+    数组方法 (Array Methods)
+</Heading>
+
+<Paragraph>
+    Lodash 提供了丰富的数组操作方法，覆盖遍历、过滤、转换、查找等常见需求。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    遍历方法
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.forEach</Mark>
+        </TableCell>
+        <TableCell>
+            遍历数组元素，对每个元素执行回调
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.forEachRight</Mark>
+        </TableCell>
+        <TableCell>
+            从右到左遍历数组
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.map</Mark>
+        </TableCell>
+        <TableCell>
+            遍历数组并返回新数组
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.mapValues</Mark>
+        </TableCell>
+        <TableCell>
+            遍历对象值并返回新对象
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.times</Mark>
+        </TableCell>
+        <TableCell>
+            执行回调指定次数
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    过滤与查找
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.filter</Mark>
+        </TableCell>
+        <TableCell>
+            过滤数组，返回满足条件的元素
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.find</Mark>
+        </TableCell>
+        <TableCell>
+            查找第一个满足条件的元素
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.findIndex</Mark>
+        </TableCell>
+        <TableCell>
+            查找第一个满足条件的元素索引
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.findLast</Mark>
+        </TableCell>
+        <TableCell>
+            查找最后一个满足条件的元素
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.findLastIndex</Mark>
+        </TableCell>
+        <TableCell>
+            查找最后一个满足条件的元素索引
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.reject</Mark>
+        </TableCell>
+        <TableCell>
+            过滤数组，返回不满足条件的元素
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    数组操作
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.chunk</Mark>
+        </TableCell>
+        <TableCell>
+            将数组分割成指定长度的块
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.compact</Mark>
+        </TableCell>
+        <TableCell>
+            移除数组中的假值
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.concat</Mark>
+        </TableCell>
+        <TableCell>
+            合并数组
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.flatten</Mark>
+        </TableCell>
+        <TableCell>
+            减少一级数组嵌套深度
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.flattenDeep</Mark>
+        </TableCell>
+        <TableCell>
+            将数组完全扁平化
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.flattenDepth</Mark>
+        </TableCell>
+        <TableCell>
+            减少指定层级的数组嵌套
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.slice</Mark>
+        </TableCell>
+        <TableCell>
+            裁剪数组片段
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    集合操作
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.difference</Mark>
+        </TableCell>
+        <TableCell>
+            返回第一个数组有而其他数组没有的元素
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.differenceBy</Mark>
+        </TableCell>
+        <TableCell>
+            使用 iteratee 进行差异比较
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.differenceWith</Mark>
+        </TableCell>
+        <TableCell>
+            使用 comparator 进行差异比较
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.intersection</Mark>
+        </TableCell>
+        <TableCell>
+            返回所有数组共有的元素
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.intersectionBy</Mark>
+        </TableCell>
+        <TableCell>
+            使用 iteratee 进行交集比较
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.intersectionWith</Mark>
+        </TableCell>
+        <TableCell>
+            使用 comparator 进行交集比较
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.union</Mark>
+        </TableCell>
+        <TableCell>
+            合并数组并去重
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.unionBy</Mark>
+        </TableCell>
+        <TableCell>
+            使用 iteratee 进行合并去重
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.uniq</Mark>
+        </TableCell>
+        <TableCell>
+            数组去重
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.uniqBy</Mark>
+        </TableCell>
+        <TableCell>
+            使用 iteratee 进行去重
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.xor</Mark>
+        </TableCell>
+        <TableCell>
+            返回对称差集
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    使用示例
+</Heading>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var _ = require('lodash');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    过滤偶数：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var evens = _.filter([1, 2, 3, 4, 5], function(n) {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  return n % 2 == 0;</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">});</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => [2, 4]</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    数组分块：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">_.chunk(['a', 'b', 'c', 'd'], 2);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => [['a', 'b'], ['c', 'd']]</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    查找元素：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">_.find(users, function(o) { return o.age >= 18; });</Mark><Mark>`</Mark>
+</Paragraph>
