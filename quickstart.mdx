@@ -1,0 +1,129 @@
+---
+title: 快速开始
+icon: 🚀
+---
+
+<Heading level="1">
+    快速开始
+</Heading>
+
+<Paragraph>
+    本指南将帮助你快速上手 Lodash。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    在浏览器中使用
+</Heading>
+
+<Paragraph>
+    直接在 HTML 中引入 Lodash：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">&lt;script src="lodash.js"&gt;&lt;/script&gt;</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    使用 npm 安装
+</Heading>
+
+<Paragraph>
+    首先确保已安装 npm：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm i -g npm</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">$ npm i --save lodash</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    在 Node.js 中使用
+</Heading>
+
+<Paragraph>
+    加载完整构建：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">// 加载完整构建</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var _ = require('lodash');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    加载核心构建：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">// 加载核心构建</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var _ = require('lodash/core');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    加载 FP 构建（不可变、自动柯里化、iteratee-first data-last 方法）：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">// 加载 FP 构建</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    按需加载方法
+</Heading>
+
+<Paragraph>
+    按类别加载：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var array = require('lodash/array');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var object = require('lodash/fp/object');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    精确加载单个方法（适合 browserify/rollup/webpack 打包）：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var at = require('lodash/at');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var curryN = require('lodash/fp/curryN');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    简单示例
+</Heading>
+
+<Paragraph>
+    使用 Lodash 处理数组：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var _ = require('lodash');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var arr = [1, 2, 3, 4, 5];</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var evens = _.filter(arr, function(n) {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  return n % 2 == 0;</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">});</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">console.log(evens); // [2, 4]</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    使用 FP 模块组合函数：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var square = function(n) { return n * n; };</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var add = function(a, b) { return a + b; };</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var addSquared = fp.flow(fp.map(square), fp.sum);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">console.log(addSquared([1, 2, 3])); // 14</Mark><Mark>`</Mark>
+</Paragraph>
