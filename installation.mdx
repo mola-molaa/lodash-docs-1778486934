@@ -1,0 +1,180 @@
+---
+title: 安装指南
+icon: 📦
+---
+
+<Heading level="1">
+    安装指南
+</Heading>
+
+<Paragraph>
+    本章介绍如何在各种环境中安装和使用 Lodash。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    通过 npm 安装
+</Heading>
+
+<Paragraph>
+    这是推荐的安装方式：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm install lodash</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    或者安装特定版本：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">$ npm install lodash@4.18.1</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    通过 CDN 使用
+</Heading>
+
+<Paragraph>
+    使用 jsDelivr CDN：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">&lt;script src="https://cdn.jsdelivr.net/npm/lodash@4.18.1/lodash.min.js"&gt;&lt;/script&gt;</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    Node.js 环境
+</Heading>
+
+<Paragraph>
+    加载完整构建：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var _ = require('lodash');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    加载核心构建（体积更小）：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var _ = require('lodash/core');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    加载 FP 构建：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var fp = require('lodash/fp');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    浏览器环境
+</Heading>
+
+<Paragraph>
+    直接在 HTML 中引入：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">&lt;script src="lodash.js"&gt;&lt;/script&gt;</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    使用后可以通过全局变量 <Mark color="blue">_</Mark> 访问：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">&lt;script&gt;</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  console.log(_.version);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">&lt;/script&gt;</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    模块化加载
+</Heading>
+
+<Paragraph>
+    按类别加载：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var array = require('lodash/array');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var object = require('lodash/object');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var fpObject = require('lodash/fp/object');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    精确加载单个方法（适合 tree-shaking）：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var at = require('lodash/at');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var curryN = require('lodash/fp/curryN');</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    其他模块格式
+</Heading>
+
+<Paragraph>
+    Lodash 还支持以下模块格式：
+</Paragraph>
+
+<BulletedList>
+    <Mark bold>lodash-es</Mark> - ES 模块格式，支持 tree-shaking
+</BulletedList>
+<BulletedList>
+    <Mark bold>lodash-amd</Mark> - AMD 模块格式
+</BulletedList>
+<BulletedList>
+    <Mark bold>babel-plugin-lodash</Mark> - Babel 插件，按需加载
+</BulletedList>
+<BulletedList>
+    <Mark bold>lodash-webpack-plugin</Mark> - Webpack 插件
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    系统要求
+</Heading>
+
+<Paragraph>
+    Lodash 支持 Node.js <Mark bold>4.0.0</Mark> 及以上版本。
+</Paragraph>
+
+<Paragraph>
+    支持现代浏览器环境，包括但不限于：
+</Paragraph>
+
+<BulletedList>
+    Chrome
+</BulletedList>
+<BulletedList>
+    Firefox
+</BulletedList>
+<BulletedList>
+    Safari
+</BulletedList>
+<BulletedList>
+    Edge
+</BulletedList>
+<BulletedList>
+    Internet Explorer 9+
+</BulletedList>
