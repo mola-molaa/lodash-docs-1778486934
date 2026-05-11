@@ -1,0 +1,287 @@
+---
+title: 对象方法
+icon: 🗂️
+---
+
+<Heading level="1">
+    对象方法 (Object Methods)
+</Heading>
+
+<Paragraph>
+    Lodash 提供了强大的对象操作工具，涵盖属性访问、修改、合并等功能。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    属性访问
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.get</Mark>
+        </TableCell>
+        <TableCell>
+            安全获取对象属性值
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.set</Mark>
+        </TableCell>
+        <TableCell>
+            设置对象属性值
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.has</Mark>
+        </TableCell>
+        <TableCell>
+            检查路径是否存在
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.hasIn</Mark>
+        </TableCell>
+        <TableCell>
+            检查路径是否存在（包括继承属性）
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.result</Mark>
+        </TableCell>
+        <TableCell>
+            获取属性值，如果是函数则执行
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.property</Mark>
+        </TableCell>
+        <TableCell>
+            创建属性访问函数
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.propertyOf</Mark>
+        </TableCell>
+        <TableCell>
+            创建从对象读取属性的函数
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    对象修改
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.assign</Mark>
+        </TableCell>
+        <TableCell>
+            分配源对象的可枚举属性到目标对象
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.assignIn</Mark>
+        </TableCell>
+        <TableCell>
+            分配所有可枚举属性（包括继承的）
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.defaults</Mark>
+        </TableCell>
+        <TableCell>
+            分配默认属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.defaultsDeep</Mark>
+        </TableCell>
+        <TableCell>
+            深度分配默认属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.merge</Mark>
+        </TableCell>
+        <TableCell>
+            深度合并对象
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.mergeWith</Mark>
+        </TableCell>
+        <TableCell>
+            使用自定义合并策略深度合并
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.setWith</Mark>
+        </TableCell>
+        <TableCell>
+            使用自定义克隆方法设置属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.update</Mark>
+        </TableCell>
+        <TableCell>
+            更新对象属性值
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.updateWith</Mark>
+        </TableCell>
+        <TableCell>
+            使用自定义克隆方法更新属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.unset</Mark>
+        </TableCell>
+        <TableCell>
+            删除对象属性
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    对象检查
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.keys</Mark>
+        </TableCell>
+        <TableCell>
+            获取对象自身可枚举属性名
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.keysIn</Mark>
+        </TableCell>
+        <TableCell>
+            获取对象所有可枚举属性名
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.values</Mark>
+        </TableCell>
+        <TableCell>
+            获取对象自身可枚举属性值
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.toPairs</Mark>
+        </TableCell>
+        <TableCell>
+            将对象转换为键值对数组
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.invert</Mark>
+        </TableCell>
+        <TableCell>
+            反转对象的键值
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.pick</Mark>
+        </TableCell>
+        <TableCell>
+            挑选指定属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.pickBy</Mark>
+        </TableCell>
+        <TableCell>
+            按条件挑选属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.omit</Mark>
+        </TableCell>
+        <TableCell>
+            排除指定属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>_.omitBy</Mark>
+        </TableCell>
+        <TableCell>
+            按条件排除属性
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    使用示例
+</Heading>
+
+<Paragraph>
+    安全获取嵌套属性：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var object = { 'a': [{ 'b': { 'c': 3 } }] };</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">_.get(object, 'a[0].b.c', 'default');</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => 3</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    深度合并对象：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">var object = {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  'a': [{ 'b': 2 }, { 'd': 4 }]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">};</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">var other = {</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">  'a': [{ 'c': 3 }, { 'e': 5 }]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">};</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">_.merge(object, other);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Paragraph>
+    挑选属性：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">_.pick({ 'a': 1, 'b': 2, 'c': 3 }, ['a', 'c']);</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">// => { 'a': 1, 'c': 3 }</Mark><Mark>`</Mark>
+</Paragraph>
