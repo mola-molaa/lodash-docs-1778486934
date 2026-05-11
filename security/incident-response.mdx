@@ -1,0 +1,345 @@
+---
+title: 事件响应计划
+icon: 🚨
+---
+
+<Heading level="1">
+    事件响应计划
+</Heading>
+
+<Paragraph>
+    本文档概述了处理<Mark bold>安全报告</Mark>的正式流程，包括如何<Mark bold>分流、评估和负责任地披露</Mark>漏洞。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    简介
+</Heading>
+
+<Paragraph>
+    安全是 Lodash 的首要任务。本文档概述了处理安全报告的<Mark bold>正式流程</Mark>，包括如何<Mark bold>分流、评估和披露</Mark>漏洞。
+</Paragraph>
+
+<Paragraph>
+    安全报告处理流程必须与项目的 <Mark color="blue">SECURITY</Mark> 策略保持一致，不能显著偏离。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    范围
+</Heading>
+
+<Paragraph>
+    <Mark bold>安全分流团队</Mark> 将使用本文档作为流程指南，从分流到解决安全漏洞。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    安全报告处理流程图
+</Heading>
+
+<Paragraph>
+    以下图表详细说明了处理安全报告的<Mark bold>决策流程</Mark>：
+</Paragraph>
+
+<Paragraph textAlign="left" blockColor="light_grey">
+<Mark>`</Mark><Mark color="blue">flowchart TD</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    A[安全报告接收] --> B[分配安全报告协调员]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    B --> E{提前披露?}</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    E -- 否 --> J[继续标准私有流程]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    E -- 是 --> F[私有化披露]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    F --> G[处理相关 PR 和 Issue]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    G --> H[请求 GitHub 删除公开 PR/Issue]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    H --> I[创建公开占位 Issue]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    I --> J[5天内确认收到报告]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    J --> K[在分流仓库创建 Issue 以便可见]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    K --> L[评估报告]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    L --> M{信息充足?}</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    M -- 否 --> N[请求额外信息]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    N --> L</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    M -- 是 --> O{有效漏洞?}</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    O -- 否 --> X[关闭报告为无效]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    X --> Y[10天内告知报告者]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    O -- 是 --> Q[创建公告]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    Q --> Q1[计算 CVSS 评分]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    Q1 --> Q2[请求 CVE]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    Q2 --> R{需要补丁?}</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    R -- 否 --> Z[公开披露]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    R -- 是 --> T[开发补丁]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    T --> U[测试解决方案]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    U --> V[添加回归测试]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    V --> W[创建包含 CVE 的安全发布]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    W --> Z</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    Z --> Z1[通知社区]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    Z1 --> Z2[官方博客文章]</Mark><Mark>`</Mark>
+<Mark>`</Mark><Mark color="blue">    Z1 --> Z3[社交媒体公告]</Mark><Mark>`</Mark>
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    角色与职责
+</Heading>
+
+<Heading level="3">
+    发现者 (Finder)
+</Heading>
+
+<Paragraph>
+    发现项目中的潜在安全漏洞的人。发现者不一定是报告者。
+</Paragraph>
+
+<Paragraph>
+    <Mark bold>职责：</Mark>
+</Paragraph>
+
+<BulletedList>
+    识别项目中的潜在安全漏洞
+</BulletedList>
+<BulletedList>
+    与报告者或安全分流团队共享漏洞详细信息
+</BulletedList>
+
+<Paragraph>
+    <Mark bold>期望：</Mark>
+</Paragraph>
+
+<BulletedList>
+    遵循负责任披露指南，确保在公开披露前私下报告漏洞
+</BulletedList>
+<BulletedList>
+    提供关于漏洞的清晰准确信息
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    报告者 (Reporter)
+</Heading>
+
+<Paragraph>
+    向安全分流团队提交安全报告并提供疑似漏洞详细信息的人。
+</Paragraph>
+
+<Paragraph>
+    <Mark bold>职责：</Mark>
+</Paragraph>
+
+<BulletedList>
+    向安全分流团队提交安全报告
+</BulletedList>
+
+<Paragraph>
+    <Mark bold>期望：</Mark>
+</Paragraph>
+
+<BulletedList>
+    提供疑似漏洞的详细信息
+</BulletedList>
+<BulletedList>
+    遵循负责任披露指南（在公开披露前私下报告）
+</BulletedList>
+<BulletedList>
+    在流程中与安全分流团队合作
+</BulletedList>
+<BulletedList>
+    测试并验证补丁（如适用）
+</BulletedList>
+<BulletedList>
+    尊重安全时间表，避免提前公开披露
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    协调员 (Coordinator)
+</Heading>
+
+<Paragraph>
+    作为特定安全报告的中心点，确保报告遵循所有负责任披露指南。
+</Paragraph>
+
+<Paragraph>
+    <Mark bold>职责：</Mark>
+</Paragraph>
+
+<BulletedList>
+    在要求的时间范围内确认收到安全报告
+</BulletedList>
+<BulletedList>
+    策划禁运期并识别涉及的最小人员集合
+</BulletedList>
+<BulletedList>
+    分配分析师评估和验证报告
+</BulletedList>
+<BulletedList>
+    确保与报告者保持沟通
+</BulletedList>
+<BulletedList>
+    如确认漏洞，协调修复流程
+</BulletedList>
+<BulletedList>
+    监督公告和 CVE 请求流程
+</BulletedList>
+<BulletedList>
+    必要时升级关键漏洞
+</BulletedList>
+<BulletedList>
+    跟踪所有安全报告以便可见和报告
+</BulletedList>
+
+<Paragraph>
+    <Mark bold>要求：</Mark> 必须是安全分流团队成员
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    分析师 (Analyst)
+</Heading>
+
+<Paragraph>
+    <Mark bold>职责：</Mark>
+</Paragraph>
+
+<BulletedList>
+    确定报告的问题是否为真实漏洞，且在我们的威胁模型范围内
+</BulletedList>
+<BulletedList>
+    验证概念验证漏洞利用
+</BulletedList>
+<BulletedList>
+    评估安全报告并确定其严重性（协助 CVSS）
+</BulletedList>
+<BulletedList>
+    根据最佳实践验证报告的漏洞
+</BulletedList>
+<BulletedList>
+    识别潜在的缓解策略和变通方法
+</BulletedList>
+<BulletedList>
+    为安全报告协调员准备报告
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    修复开发者 (Remediation Developer)
+</Heading>
+
+<Paragraph>
+    <Mark bold>职责：</Mark>
+</Paragraph>
+
+<BulletedList>
+    根据报告的漏洞开发补丁或解决方案
+</BulletedList>
+<BulletedList>
+    确保补丁遵循最佳实践且可测试
+</BulletedList>
+<BulletedList>
+    向现有测试套件添加测试以确认漏洞（补丁前）和确认修复（补丁后）
+</BulletedList>
+<BulletedList>
+    测试补丁确保其按预期工作
+</BulletedList>
+<BulletedList>
+    创建 pull request 将补丁合并到项目中
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    运行手册
+</Heading>
+
+<Paragraph>
+    以下部分概述了<Mark bold>分步流程</Mark>，解释每个决策、场景和可能的操作。
+</Paragraph>
+
+<Heading level="3">
+    步骤 0：收到安全报告
+</Heading>
+
+<Paragraph>
+    通过<Link href="SECURITY.md#reporting-a-security-issue">官方渠道</Link>或其他方式（如第三方公告服务、博客、社交媒体等）收到安全漏洞报告。
+</Paragraph>
+
+<Paragraph>
+    理想情况下，报告必须包含<Mark bold>清晰详细的信息</Mark>（受影响版本、演示问题的小型 PoC/示例项目、重现步骤、预期与实际行为、潜在影响等），但这可能因使用的通信渠道而异。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    步骤 1：分配安全报告协调员 (SRC) 并整理报告
+</Heading>
+
+<Paragraph>
+    1.1 安全分流团队中的一人将自愿并自行分配以监督案例。
+</Paragraph>
+
+<Paragraph>
+    1.2 如果报告是在公开渠道（如 GitHub issues）中意外或故意创建的，尽快在私有 Slack 频道 <Mark color="blue">#lodash-security-triage</Mark> 中分享此信息。
+</Paragraph>
+
+<Paragraph>
+    1.3 在此阶段，安全报告协调员 (SRC) 将在 <Link href="https://github.com/lodash/security-triage">lodash/security-triage</Link> 仓库中创建（私有）Issue。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    步骤 2：审查报告并确定严重性
+</Heading>
+
+<Paragraph>
+    2.1 安全分流团队审查报告并确定其严重性，评估对项目的影响。
+</Paragraph>
+
+<Paragraph>
+    2.2 根据提供的信息确定报告的严重性。如果报告被视为无关或无效，SRC 将关闭 Issue 并告知报告者。
+</Paragraph>
+
+<Paragraph>
+    2.3 如果报告被视为相关且有效，SRC 将创建公告并请求 CVE 编号。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    步骤 3：补丁和发布
+</Heading>
+
+<Paragraph>
+    3.1 安全分流团队确定是否修补此漏洞并着手处理。
+</Paragraph>
+
+<Paragraph>
+    3.2 缓解团队（修复开发者、分析师、报告者）将处理补丁，重新评估报告，并包含回归测试。
+</Paragraph>
+
+<Paragraph>
+    3.3 Lodash TSC 将公开发布有安全补丁可用的公告和发布计划。
+</Paragraph>
+
+<Paragraph>
+    3.4 Lodash TSC 将创建发布并发布到 npm。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="3">
+    步骤 4：公开披露
+</Heading>
+
+<Paragraph>
+    4.1 SRC 将公告公开并关闭（步骤 1 中创建的）协调 Issue。
+</Paragraph>
+
+<Paragraph>
+    4.2 SRC 可以请 Lodash TSC 协调博客文章或社交媒体公告，使用 OpenJS Foundation 渠道。
+</Paragraph>
