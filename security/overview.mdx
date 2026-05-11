@@ -1,0 +1,206 @@
+---
+title: 安全策略概览
+icon: 🛡️
+---
+
+<Heading level="1">
+    安全策略概览
+</Heading>
+
+<Paragraph>
+    Lodash 将安全视为最高优先级。本文档介绍支持版本、威胁模型和安全报告流程。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    支持的版本
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>版本</Mark>
+        </TableCell>
+        <TableCell>
+            <Mark bold>支持状态</Mark>
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            4.x
+        </TableCell>
+        <TableCell>
+            ✅ 支持
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            3.x
+        </TableCell>
+        <TableCell>
+            ❌ 不支持
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            2.x
+        </TableCell>
+        <TableCell>
+            ❌ 不支持
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            1.x
+        </TableCell>
+        <TableCell>
+            ❌ 不支持
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    威胁模型
+</Heading>
+
+<Paragraph>
+    威胁模型定义了 Lodash 的信任边界，明确了漏洞评估的范围。
+</Paragraph>
+
+<Heading level="3">
+    Lodash 不信任的元素
+</Heading>
+
+<BulletedList>
+    <Mark bold>提供给 Lodash 的数据</Mark> - 所有输入数据（数组、对象、字符串、函数等）都视为不可信
+</BulletedList>
+<BulletedList>
+    <Mark bold>不可信的网络来源或用户控制数据</Mark> - 任何来自未验证用户输入、网络响应、文件内容的数据
+</BulletedList>
+<BulletedList>
+    <Mark bold>运行时篡改 Lodash 内部</Mark> - 修改 Lodash 内部符号、猴子补丁等
+</BulletedList>
+
+<Heading level="3">
+    Lodash 信任的元素
+</Heading>
+
+<BulletedList>
+    <Mark bold>JavaScript 运行时和标准库</Mark> - 假设运行时环境正确且未被入侵
+</BulletedList>
+<BulletedList>
+    <Mark bold>环境和配置</Mark> - 依赖宿主环境（Node.js、浏览器等）的正确运行
+</BulletedList>
+<BulletedList>
+    <Mark bold>调用 Lodash 的代码</Mark> - 应用或库负责输入验证
+</BulletedList>
+<BulletedList>
+    <Mark bold>安装的包完整性</Mark> - 假设安装的包未被篡改
+</BulletedList>
+<BulletedList>
+    <Mark bold>执行上下文的权限</Mark> - Lodash 继承用户或进程的权限
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    范围内的漏洞示例
+</Heading>
+
+<Table>
+    <TableRow>
+        <TableCell>
+            <Mark bold>原型污染 (CWE-1321)</Mark>
+        </TableCell>
+        <TableCell>
+            如果 Lodash 函数（如 merge、defaultsDeep、set）因清理不足允许通过不可信输入修改 Object.prototype 属性
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>意外代码执行 (CWE-94)</Mark>
+        </TableCell>
+        <TableCell>
+            如果 Lodash 方法（如 template()）在未记录警告的情况下将攻击者控制的输入作为代码执行
+        </TableCell>
+    </TableRow>
+    <TableRow>
+        <TableCell>
+            <Mark bold>拒绝服务 (CWE-400)</Mark>
+        </TableCell>
+        <TableCell>
+            如果在文档使用限制内对有效输入操作时，Lodash 进入无限递归、过度内存使用或挂起
+        </TableCell>
+    </TableRow>
+</Table>
+
+<Callout icon="⚠️" blockColor="yellow" borderColor="light_orange">
+    安全提示：关于 <Mark bold>_.template</Mark> 的使用
+    
+    _.template 的当前实现将模板字符串编译为可执行代码，当给定不可信输入时可能导致代码注入（如 CVE-2021-23337）。因此我们将其视为不安全，建议不要使用。
+    
+    我们计划在 Lodash v5 中移除 _.template。在此之前它仍然可用；如果继续使用，建议使用仅开发者控制的静态模板字符串和可信数据，避免在模板字符串和传递给编译函数的数据中使用不可信输入。
+</Callout>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    范围外的漏洞示例
+</Heading>
+
+<BulletedList>
+    <Mark bold>恶意第三方包 (CWE-1357)</Mark> - 如果项目包含覆盖 Lodash 行为的恶意依赖
+</BulletedList>
+<BulletedList>
+    <Mark bold>未验证的应用输入</Mark> - 将攻击者控制的输入直接传递给 Lodash 函数是应用 bug
+</BulletedList>
+<BulletedList>
+    <Mark bold>通过可信代码的原型污染</Mark> - 开发者故意合并用户输入到全局对象
+</BulletedList>
+<BulletedList>
+    <Mark bold>状态或访问器支持路径参数</Mark> - 路径参数应为数据而非代码
+</BulletedList>
+<BulletedList>
+    <Mark bold>JavaScript 固有原型行为</Mark> - 读取继承属性是语言语义
+</BulletedList>
+<BulletedList>
+    <Mark bold>漏洞链和 gadget</Mark> - Lodash 漏洞必须仅通过 Lodash 即可利用
+</BulletedList>
+<BulletedList>
+    <Mark bold>JavaScript 运行时或平台漏洞</Mark> - 引擎 bug 不在范围内
+</BulletedList>
+<BulletedList>
+    <Mark bold>环境配置错误 (CWE-15)</Mark> - 过时 Node.js 版本等
+</BulletedList>
+<BulletedList>
+    <Mark bold>供应链攻击</Mark> - npm 注册表篡改、MITM 攻击等
+</BulletedList>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    总结
+</Heading>
+
+<Paragraph>
+    Lodash 是一个完全在其调用者信任边界内运行的实用工具库。范围内的漏洞仅限于 <Mark bold>Lodash 在存在不可信输入时未能维持其文档化行为</Mark> 的情况，且不能假设可信组件（运行时、操作系统或调用应用代码）已被入侵。
+</Paragraph>
+
+<Divider blockColor="light_grey" />
+
+<Heading level="2">
+    相关链接
+</Heading>
+
+<Paragraph>
+    <Mark bold>完整威胁模型：</Mark> <Link href="https://github.com/lodash/lodash/blob/HEAD/threat-model.md">threat-model.md</Link>
+</Paragraph>
+<Paragraph>
+    <Mark bold>安全策略：</Mark> <Link href="https://github.com/lodash/lodash/blob/HEAD/SECURITY.md">SECURITY.md</Link>
+</Paragraph>
+<Paragraph>
+    <Mark bold>事件响应计划：</Mark> <Link href="https://github.com/lodash/lodash/blob/HEAD/incident_response_plan.md">incident_response_plan.md</Link>
+</Paragraph>
